@@ -28,13 +28,8 @@ export class Shop {
           this.updateBrieQualityIfLessThanZero(i);
         } else if (this.items[i].name === BACKSTAGE) {
           this.updateBackstageQualityOnLessThanZero(i);
-        }
-        if (this.items[i].name != BRIE) {
-          if (this.items[i].name != BACKSTAGE) {
-            if (this.items[i].quality > 0) {
-              this.items[i].quality = this.items[i].quality - 1;
-            }
-          }
+        } else {
+          this.updateItemQualityOnLessThanZero(i);
         }
       }
     }
@@ -50,6 +45,12 @@ export class Shop {
 
   updateBackstageQualityOnLessThanZero(i) {
     this.items[i].quality = this.items[i].quality - this.items[i].quality;
+  }
+
+  updateItemQualityOnLessThanZero(i) {
+    if (this.items[i].quality > 0) {
+      this.items[i].quality = this.items[i].quality - 1;
+    }
   }
 
   updateAgedBrieQuality(i) {
