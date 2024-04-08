@@ -1,13 +1,12 @@
 import fs from "fs";
 import { describe, expect, test } from "vitest";
-import { Item, Shop } from "../src/gilded_rose.mjs";
+import { CONJURED, Item, Shop } from "../src/gilded_rose.mjs";
 
 describe("Gilded Rose", () => {
   const data = fs.readFileSync("./test/characteristic-test.json", "utf-8");
   const dataObj = JSON.parse(data);
 
   for (const entry of dataObj) {
-    console.log(entry);
     test(JSON.stringify(entry), () => {
       const { input, output } = entry;
       const gildedRose = new Shop([new Item(input.name, input.sellIn, input.quality)]);
@@ -29,5 +28,12 @@ describe("Gilded Rose", () => {
   test("ArrayDeclaration", () => {
     const gildedRose = new Shop(["Stryker was here"]);
     expect(() => gildedRose.updateQuality()).toThrowError();
+  });
+});
+
+describe("Conjured", () => {
+  test("Conjured item can be made", () => {
+    const gildedRose = new Shop([new Item(CONJURED, 30, 40)]);
+    expect(gildedRose.items.length).toBe(1);
   });
 });

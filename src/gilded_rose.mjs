@@ -9,6 +9,7 @@ export class Item {
 const BRIE = "Aged Brie";
 const BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
 const SULFURAS = "Sulfuras, Hand of Ragnaros";
+export const CONJURED = "Conjured potato";
 
 export class Shop {
   constructor(items = []) {
