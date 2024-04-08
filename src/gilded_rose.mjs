@@ -27,6 +27,16 @@ export class Shop {
     return this.items;
   }
 
+  handleQualityUpdate(i) {
+    if (this.items[i].name === BRIE) {
+      this.updateAgedBrieQuality(i);
+    } else if (this.items[i].name === BACKSTAGE) {
+      this.updateBackstageQuality(i);
+    } else {
+      this.updateItem(i);
+    }
+  }
+
   handleSellIn(i) {
     this.items[i].sellIn = this.items[i].sellIn - 1;
     if (this.items[i].sellIn < 0) {
@@ -85,16 +95,6 @@ export class Shop {
   updateItem(i) {
     if (this.items[i].quality > 0) {
       this.items[i].quality = this.items[i].quality - 1;
-    }
-  }
-
-  handleQualityUpdate(i) {
-    if (this.items[i].name === BRIE) {
-      this.updateAgedBrieQuality(i);
-    } else if (this.items[i].name === BACKSTAGE) {
-      this.updateBackstageQuality(i);
-    } else {
-      this.updateItem(i);
     }
   }
 }
