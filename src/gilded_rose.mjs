@@ -11,7 +11,11 @@ export class Shop {
     this.items = items;
   }
 
-  updateAgedBrieQuality() {}
+  updateAgedBrieQuality(i) {
+    if (this.items[i].quality < 50) {
+      this.items[i].quality = this.items[i].quality + 1;
+    }
+  }
 
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
