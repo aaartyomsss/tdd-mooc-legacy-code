@@ -33,6 +33,8 @@ export class Shop {
       this.updateAgedBrieQuality(i);
     } else if (this.items[i].name === BACKSTAGE) {
       this.updateBackstageQuality(i);
+    } else if (this.items[i].name === CONJURED) {
+      this.items[i].quality -= 2;
     } else {
       this.updateItem(i);
     }

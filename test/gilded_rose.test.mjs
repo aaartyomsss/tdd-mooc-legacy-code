@@ -36,4 +36,13 @@ describe("Conjured", () => {
     const gildedRose = new Shop([new Item(CONJURED, 30, 40)]);
     expect(gildedRose.items.length).toBe(1);
   });
+
+  test("Conjured item quality is deducted by 2 if the sellIn > 0", () => {
+    const gildedRose = new Shop([new Item(CONJURED, 30, 40)]);
+    const items = gildedRose.updateQuality();
+    const item = items[0];
+
+    expect(item.quality).to.equal(38);
+    expect(item.sellIn).to.equal(29);
+  });
 });
