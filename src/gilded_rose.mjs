@@ -24,30 +24,34 @@ export class Shop {
 
       this.items[i].sellIn = this.items[i].sellIn - 1;
       if (this.items[i].sellIn < 0) {
-        if (this.items[i].name === BRIE) {
-          this.updateBrieQualityIfLessThanZero(i);
-        } else if (this.items[i].name === BACKSTAGE) {
-          this.updateBackstageQualityOnLessThanZero(i);
-        } else {
-          this.updateItemQualityOnLessThanZero(i);
-        }
+        this.updateItemQualityOnBeingExpired(i);
       }
     }
 
     return this.items;
   }
 
-  updateBrieQualityIfLessThanZero(i) {
+  updateItemQualityOnBeingExpired(i) {
+    if (this.items[i].name === BRIE) {
+      this.updateBrieQualityIfExpired(i);
+    } else if (this.items[i].name === BACKSTAGE) {
+      this.updateBackstageQualityIfExpired(i);
+    } else {
+      this.updateItemQualityIfExpired(i);
+    }
+  }
+
+  updateBrieQualityIfExpired(i) {
     if (this.items[i].quality < 50) {
       this.items[i].quality = this.items[i].quality + 1;
     }
   }
 
-  updateBackstageQualityOnLessThanZero(i) {
+  updateBackstageQualityIfExpired(i) {
     this.items[i].quality = this.items[i].quality - this.items[i].quality;
   }
 
-  updateItemQualityOnLessThanZero(i) {
+  updateItemQualityIfExpired(i) {
     if (this.items[i].quality > 0) {
       this.items[i].quality = this.items[i].quality - 1;
     }
