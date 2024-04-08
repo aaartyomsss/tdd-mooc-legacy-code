@@ -21,14 +21,17 @@ export class Shop {
         continue;
       }
       this.handleQualityUpdate(i);
-
-      this.items[i].sellIn = this.items[i].sellIn - 1;
-      if (this.items[i].sellIn < 0) {
-        this.updateItemQualityOnBeingExpired(i);
-      }
+      this.handleSellIn(i);
     }
 
     return this.items;
+  }
+
+  handleSellIn(i) {
+    this.items[i].sellIn = this.items[i].sellIn - 1;
+    if (this.items[i].sellIn < 0) {
+      this.updateItemQualityOnBeingExpired(i);
+    }
   }
 
   updateItemQualityOnBeingExpired(i) {
