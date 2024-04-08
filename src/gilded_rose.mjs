@@ -34,7 +34,7 @@ export class Shop {
     } else if (this.items[i].name === BACKSTAGE) {
       this.updateBackstageQuality(i);
     } else if (this.items[i].name === CONJURED) {
-      this.items[i].quality -= 2;
+      this.updateConjuredQuality(i);
     } else {
       this.updateItem(i);
     }
@@ -92,6 +92,12 @@ export class Shop {
           this.items[i].quality = this.items[i].quality + 1;
         }
       }
+    }
+  }
+
+  updateConjuredQuality(i) {
+    if (this.items[i].quality > 0) {
+      this.items[i].quality -= 2;
     }
   }
 
