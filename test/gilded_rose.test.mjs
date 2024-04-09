@@ -45,4 +45,22 @@ describe("Conjured", () => {
     expect(item.quality).to.equal(38);
     expect(item.sellIn).to.equal(29);
   });
+
+  test("Conjured item quality is deducted by 4 if the sellIn < 0", () => {
+    const gildedRose = new Shop([new Item(CONJURED, 0, 40)]);
+    const items = gildedRose.updateQuality();
+    const item = items[0];
+
+    expect(item.quality).to.equal(36);
+    expect(item.sellIn).to.equal(-1);
+  });
+
+  test.skip("Conjured item quality is not going below 0 if sellIn > 0", () => {
+    const gildedRose = new Shop([new Item(CONJURED, 1, 1)]);
+    const items = gildedRose.updateQuality();
+    const item = items[0];
+
+    expect(item.quality).to.equal(0);
+    expect(item.sellIn).to.equal(0);
+  });
 });

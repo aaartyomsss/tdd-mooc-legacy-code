@@ -52,6 +52,8 @@ export class Shop {
       this.updateBrieQualityIfExpired(i);
     } else if (this.items[i].name === BACKSTAGE) {
       this.updateBackstageQualityIfExpired(i);
+    } else if (this.items[i].name === CONJURED) {
+      this.updateConjuredQuality(i);
     } else {
       this.updateItemQualityIfExpired(i);
     }
