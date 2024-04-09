@@ -98,8 +98,10 @@ export class Shop {
   }
 
   updateConjuredQuality(i) {
-    if (this.items[i].quality > 0) {
+    if (this.items[i].quality - 2 > 0) {
       this.items[i].quality -= 2;
+    } else {
+      this.items[i].quality = 0;
     }
   }
 
