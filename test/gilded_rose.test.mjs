@@ -91,6 +91,24 @@ describe("Conjured", () => {
     expect(item.sellIn).to.equal(0);
   });
 
+  test("Conjured item quality is not going below 0 if sellIn < 0 and quality is 0", () => {
+    const gildedRose = new Shop([new Item(CONJURED, 0, 0)]);
+    const items = gildedRose.updateQuality();
+    const item = items[0];
+
+    expect(item.quality).to.equal(0);
+    expect(item.sellIn).to.equal(-1);
+  });
+
+  test("Conjured item quality is not going below 0 if sellIn < 0 and quality is 1", () => {
+    const gildedRose = new Shop([new Item(CONJURED, 0, 1)]);
+    const items = gildedRose.updateQuality();
+    const item = items[0];
+
+    expect(item.quality).to.equal(0);
+    expect(item.sellIn).to.equal(-1);
+  });
+
   test("Conjured item quality is not going below 0 if sellIn < 0 and quality is 2", () => {
     const gildedRose = new Shop([new Item(CONJURED, 0, 2)]);
     const items = gildedRose.updateQuality();
@@ -101,7 +119,16 @@ describe("Conjured", () => {
   });
 
   test("Conjured item quality is not going below 0 if sellIn < 0 and quality is 3", () => {
-    const gildedRose = new Shop([new Item(CONJURED, 0, 2)]);
+    const gildedRose = new Shop([new Item(CONJURED, 0, 3)]);
+    const items = gildedRose.updateQuality();
+    const item = items[0];
+
+    expect(item.quality).to.equal(0);
+    expect(item.sellIn).to.equal(-1);
+  });
+
+  test("Conjured item quality is not going below 0 if sellIn < 0 and quality is 4", () => {
+    const gildedRose = new Shop([new Item(CONJURED, 0, 4)]);
     const items = gildedRose.updateQuality();
     const item = items[0];
 
