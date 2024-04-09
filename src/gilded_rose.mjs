@@ -98,11 +98,9 @@ export class Shop {
   }
 
   updateConjuredQuality(i) {
-    console.log(this.items[i].quality);
-    if (this.items[i].quality - 2 > 0) {
+    if (this.items[i].quality - 2 >= 0) {
       this.items[i].quality -= 2;
     } else {
-      console.log("Should be here");
       this.items[i].quality = 0;
     }
   }
